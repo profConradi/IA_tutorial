@@ -15897,7 +15897,297 @@ fzMzq0fTjvM3M7MaOPmbmWXIyd/MLENO/mZmGXLyNzPL0P8Dt+yA32uvEgEAAAAASUVORK5CYII=
 </div>
 </div>
 
+</div></section></section><section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="n">cnx</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;data.db&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM device_log&quot;</span><span class="p">,</span> <span class="n">cnx</span><span class="p">)</span>
+<span class="n">cnx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[51]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>mac</th>
+      <th>bssid</th>
+      <th>signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Apr  3 2018 17:33:37.817626000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-46.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Apr  3 2018 17:33:37.850833000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-44.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Apr  3 2018 17:33:37.884056000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-48.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr  3 2018 17:33:37.917058000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-58.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Apr  3 2018 17:34:06.006243000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-44.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Apr  3 2018 17:34:06.354858000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-44.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Apr  3 2018 17:34:06.374121000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-44.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Apr  3 2018 17:34:06.559534000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-48.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Apr  3 2018 17:34:06.580448000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-48.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Apr  3 2018 17:37:14.113420000 UTC</td>
+      <td>5c:ca:1a:25:c3:08</td>
+      <td>Broadcast</td>
+      <td>-58.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">urlopen</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pandas.io.json</span> <span class="kn">import</span> <span class="n">json_normalize</span>
+
+<span class="n">path1</span> <span class="o">=</span> <span class="s1">&#39;42.974049,-81.205203|42.974298,-81.195755&#39;</span>
+<span class="n">request</span><span class="o">=</span><span class="n">Request</span><span class="p">(</span><span class="s1">&#39;https://maps.googleapis.com/maps/api/elevation/json?locations=&#39;</span>
+                <span class="o">+</span><span class="n">path1</span><span class="o">+</span><span class="s1">&#39;&amp;sensor=false&amp;key=AIzaSyBzlbB-RCzF2ImC6ASTVjekwGGSdTxlp8I&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="n">elevations</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">elevations</span><span class="p">)</span>
+<span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[58]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>elevation</th>
+      <th>location.lat</th>
+      <th>location.lng</th>
+      <th>resolution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>241.963837</td>
+      <td>42.974049</td>
+      <td>-81.205203</td>
+      <td>9.543952</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>246.040115</td>
+      <td>42.974298</td>
+      <td>-81.195755</td>
+      <td>9.543952</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">elevations</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[60]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{\n   &#34;results&#34; : [\n      {\n         &#34;elevation&#34; : 241.9638366699219,\n         &#34;location&#34; : {\n            &#34;lat&#34; : 42.974049,\n            &#34;lng&#34; : -81.205203\n         },\n         &#34;resolution&#34; : 9.543951988220215\n      },\n      {\n         &#34;elevation&#34; : 246.0401153564453,\n         &#34;location&#34; : {\n            &#34;lat&#34; : 42.974298,\n            &#34;lng&#34; : -81.19575500000001\n         },\n         &#34;resolution&#34; : 9.543951988220215\n      }\n   ],\n   &#34;status&#34; : &#34;OK&#34;\n}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[61]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{u&#39;results&#39;: [{u&#39;elevation&#39;: 241.9638366699219,
+   u&#39;location&#39;: {u&#39;lat&#39;: 42.974049, u&#39;lng&#39;: -81.205203},
+   u&#39;resolution&#39;: 9.543951988220215},
+  {u&#39;elevation&#39;: 246.0401153564453,
+   u&#39;location&#39;: {u&#39;lat&#39;: 42.974298, u&#39;lng&#39;: -81.195755},
+   u&#39;resolution&#39;: 9.543951988220215}],
+ u&#39;status&#39;: u&#39;OK&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -15910,7 +16200,7 @@ fzMzq0fTjvM3M7MaOPmbmWXIyd/MLENO/mZmGXLyNzPL0P8Dt+yA32uvEgEAAAAASUVORK5CYII=
 </div>
 </div>
 
-</div></section></section>
+</div></div></section></section>
 </div>
 </div>
 
