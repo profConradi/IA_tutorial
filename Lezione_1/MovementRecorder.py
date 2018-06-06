@@ -61,7 +61,7 @@ MPU_Init()
 
 print (" Reading Data of Gyroscope and Accelerometer")
 
-LenFifo = 10
+LenFifo = 20
 Athr = 0.04
 AxFifo = collections.deque(LenFifo*[0], LenFifo)
 AyFifo = collections.deque(LenFifo*[0], LenFifo)
