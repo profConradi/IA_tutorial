@@ -16,9 +16,9 @@ Lezione 3 notebook: https://github.com/bikersimone/IA_tutorial/blob/master/Lezio
 
 Lezione 3 html: https://github.com/bikersimone/IA_tutorial/blob/master/Lezione_3/Lezione3.slides.html
 
-Lezione 3 notebook: https://github.com/bikersimone/IA_tutorial/blob/master/Lezione_4/Lezione4.ipynb
+Lezione 4 notebook: https://github.com/bikersimone/IA_tutorial/blob/master/Lezione_4/Lezione4.ipynb
 
-Lezione 3 html: https://github.com/bikersimone/IA_tutorial/blob/master/Lezione_4/Lezione4.slides.html
+Lezione 4 html: https://github.com/bikersimone/IA_tutorial/blob/master/Lezione_4/Lezione4.slides.html
 
 
 
