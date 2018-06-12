@@ -48,4 +48,4 @@ if __name__ == "__main__":
     algorithm = Negamax(7)
 
     # Start the game
-GameController([Human_Player(), AI_Player(algorithm)]).play()
+    GameController([Human_Player(), AI_Player(algorithm)]).play()

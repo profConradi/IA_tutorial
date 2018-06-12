@@ -6,8 +6,8 @@ kernel = numpy.ones((5 ,5), numpy.uint8)
 
 while (True):
     ret, frame = cam.read()
-    rangomax = numpy.array([255, 50, 50]) # B, G, R
-    rangomin = numpy.array([200, 0, 0])
+    rangomax = numpy.array([255, 60, 60]) # B, G, R
+    rangomin = numpy.array([190, 0, 0])
     mask = cv2.inRange(frame, rangomin, rangomax)
     # reduce the noise
     opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
